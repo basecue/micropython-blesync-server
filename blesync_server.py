@@ -55,9 +55,8 @@ def _create_advertising_payload(
         nonlocal payload
         payload += struct.pack("BB", len(value) + 1, adv_type) + value
 
-
     # some combinations of flags aren't allowed TODO describe
-    adv_type_flags = (0x01 if limited_disc else 0x02) + (0x00 if br_edr else 0x04)
+    adv_type_flags = (0x01 if limited_disc else 0x02) + (0x18 if br_edr else 0x04)
     _append(
         _ADV_TYPE_FLAGS,
         struct.pack("B", adv_type_flags),
